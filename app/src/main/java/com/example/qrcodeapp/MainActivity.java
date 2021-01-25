@@ -2,6 +2,7 @@ package com.example.qrcodeapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -32,14 +33,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String data =qrvalue.getText().toString();
-                QRGEncoder qrgEncoder =new QRGEncoder(data,null , QRGContents.Type.TEXT,1000);
-                try {
-                    Bitmap qrBits =qrgEncoder.encodeAsBitmap();
-                    qrImage.setImageBitmap(qrBits);
-                } catch (WriterException e) {
-                    e.printStackTrace();
+                if(data.isEmpty()){
+                    qrvalue.setError("Value Required.");
+                } else {
+                    QRGEncoder qrgEncoder =new QRGEncoder(data,null , QRGContents.Type.TEXT,1000);
+                    try {
+                        Bitmap qrBits =qrgEncoder.encodeAsBitmap();
+                        qrImage.setImageBitmap(qrBits);
+                    } catch (WriterException e) {
+                        e.printStackTrace();
+                    }
+
                 }
 
+            }
+        });
+        scanBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Scanner.class));
             }
         });
     }

@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.qrcodeapp"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -35,7 +35,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     testImplementation 'junit:junit:4.+'
     implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
-    //implementation 'com.budiyev.android:code-scanner:2.1.0'
+    implementation 'com.budiyev.android:code-scanner:2.1.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    implementation 'com.karumi:dexter:6.0.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
